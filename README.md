@@ -10,6 +10,13 @@ checkmark is the goal here.
 
 Just run `install.sh` to create symbolic links inside `~/.local/bin`.
 
+## Usage
+
+Open terminal and run `dforce`. A bunch of commands run in the terminal,
+screenshots are taken, and are stored in the `~/dforce/$YYYY-$MM-$DD`
+directory, which you can upload to Drata straight away. They contain all
+the required information like current date, time, etc.
+
 ## Supported operating system
 
 Fedora 42 & Wayland only.
