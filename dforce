@@ -20,4 +20,4 @@ output_dir=$(dforce_screenshot_dir)
 clear
 dforce_heading "Screenshots taken"
 dforce_subheading "${output_dir}"
-xdg-open "${output_dir}"
+xdg-open "${output_dir}" &
