@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+dforce_lib_dir="${0:A:h}/dforce-lib"
+fpath=("$dforce_lib_dir" "$fpath")
+
+if [[ -d "${dforce_lib_dir}" ]]; then
+   for func in "${dforce_lib_dir}"/*(N-.x:t); do
+      unhash -f "${func}" 2>/dev/null
+      autoload +X "${func}"
+   done
+fi
+
+dforce_antivirus
+dforce_automatic_updates
+dforce_hard_disk_encrypted
+dforce_password_manager
+dforce_screen_saver_lock
+
+output_dir=$(dforce_screenshot_dir)
+clear
+dforce_heading "Screenshots taken"
+dforce_subheading "${output_dir}"
+xdg-open "${output_dir}"

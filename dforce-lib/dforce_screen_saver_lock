@@ -1,0 +1,21 @@
+clear
+
+dforce_run "Current date & time" \
+  date
+
+echo
+
+dforce_run "Timeouts" \
+  grep "_timeout" ~/.config/sway/config
+
+echo
+
+dforce_run "Swayidle configuration" \
+  grep -v "#" /usr/share/sway/config.d/90-swayidle.conf
+
+echo
+
+dforce_run "Config inclusions" \
+  grep "/usr/share/sway/config.d" ~/.config/sway/config
+
+dforce_screenshot "${0:t:r}"

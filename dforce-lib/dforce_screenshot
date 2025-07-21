@@ -1,0 +1,4 @@
+today=$(dforce_today)
+output_dir=$(dforce_screenshot_dir)
+output_file="${output_dir}/${today}-$1.png"
+grimshot save active "${output_file}" > /dev/null

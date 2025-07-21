@@ -1,0 +1,8 @@
+today=$(dforce_today)
+output="${HOME}/dforce/${today}"
+
+if [[ ! -d "${output}" ]]; then
+  mkdir -p "${output}"
+fi
+
+echo "${output}"

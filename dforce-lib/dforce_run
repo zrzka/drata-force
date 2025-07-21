@@ -1,0 +1,4 @@
+dforce_heading "$1"
+shift
+dforce_subheading "$*"
+"$@"
