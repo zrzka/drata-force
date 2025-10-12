@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+heading() {
+  printf "\e[0;33m%s\e[0m\n" "$1"
+}
+
+subheading() {
+  printf "\e[0;32m%s\e[0m\n" "$*"
+}
+
+run() {
+  heading "$1"
+  shift
+  subheading "$ $*"
+  "$@"
+}
+
+screenshot_dir() {
+  local output="${HOME}/dforce/$(today)"
+
+  if [[ ! -d "${output}" ]]; then
+    mkdir -p "${output}"
+  fi
+
+  echo "${output}"
+}
+
+screenshot() {
+  local output_file="$(screenshot_dir)/$(today)-$1.png"
+
+  sleep 1 # Wait a bit, X11 ...
+
+  import -window $(xdotool getactivewindow) "png:${output_file}"
+}
+
+today() {
+  date +%F
+}
+
+open_output() {
+  local output_dir=$(screenshot_dir)
+
+  clear
+  heading "Screenshots taken"
+  subheading "${output_dir}"
+  xdg-open "${output_dir}" &
+}
+
+prepare_output() {
+  local output_dir="$(screenshot_dir)"
+
+  if [[ -d "${output_dir}" ]]; then
+    rm -rf "${output_dir}"
+  fi
+}
+
+prepare_output
+
+lib_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/dforce-lib"
+for file in "${lib_dir}"/*; do
+  clear
+
+  run "Current date & time" date
+
+  echo
+
+  . "${file}"
+
+  screenshot "$(basename "${file}")"
+done
+
+open_output

@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+
+run "Timeouts" \
+    grep "_timeout" ~/.config/i3/config
+
+echo
+
+run "xss-lock" \
+    grep -e xset -e xss-lock ~/.config/i3/config

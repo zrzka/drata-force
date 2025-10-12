@@ -1,8 +1,0 @@
-today=$(dforce_today)
-output_dir=$(dforce_screenshot_dir)
-output_file="${output_dir}/${today}-$1.png"
-
-# Wait a bit, X11 ...
-sleep 1
-
-import -window $(xdotool getactivewindow) "png:${output_file}"

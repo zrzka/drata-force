@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+
+run "Configuration" \
+    cat /etc/apt/apt.conf.d/20auto-upgrades
+
+echo
+
+run "Status" \
+    systemctl status apt-daily.timer --no-pager --lines=0

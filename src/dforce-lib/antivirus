@@ -1,0 +1,4 @@
+# -*- mode: sh -*-
+
+run "Daily scans" \
+    cat /etc/cron.daily/clamscan
