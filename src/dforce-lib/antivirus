@@ -1,4 +1,14 @@
 # -*- mode: sh -*-
 
-run "Daily scans" \
-    cat /etc/cron.daily/clamscan
+run "Daily service" \
+    cat /etc/systemd/system/clamscan-daily.service
+
+echo
+
+run "Daily timer" \
+    cat /etc/systemd/system/clamscan-daily.timer
+
+echo
+
+run "Script" \
+    cat /usr/bin/scan-for-viruses
